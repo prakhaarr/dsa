@@ -8,6 +8,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+ 
 class Solution {
     public ListNode removeZeroSumSublists(ListNode head) {
         ListNode front = new ListNode(0, head);
@@ -19,9 +20,9 @@ class Solution {
 
             while (end != null) {
                 prefixSum += end.val;
-                // Delete zero sum consecutive sequence 
                 
- if (prefixSum == 0) {
+                if (prefixSum == 0) 
+                {
                     start.next = end.next;
                 }
                 end = end.next;
