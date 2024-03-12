@@ -10,33 +10,25 @@
  */
 class Solution {
     public ListNode removeZeroSumSublists(ListNode head) {
-        int prefixSum = 0;
-        HashMap<Integer, ListNode> mp = new HashMap<>();
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        ListNode front = new ListNode(0, head);
+        ListNode start = front;
 
-        mp.put(0, dummy);
-        while (head != null) {
-            prefixSum += head.val;
-            if (mp.containsKey(prefixSum)) {
-                ListNode start = mp.get(prefixSum);
-                ListNode temp = start;
+        while (start != null) {
+            int prefixSum = 0;
+            ListNode end = start.next;
 
-                int pSum = prefixSum;
-                while (temp != head) {
-                    temp = temp.next;
-                    pSum += temp.val;
-
-                    if (temp != head) {
-                        mp.remove(pSum);
-                    }
+            while (end != null) {
+                prefixSum += end.val;
+                // Delete zero sum consecutive sequence 
+                
+ if (prefixSum == 0) {
+                    start.next = end.next;
                 }
-                start.next = head.next;
-            } else {
-                mp.put(prefixSum, head);
+                end = end.next;
             }
-            head = head.next;
+
+            start = start.next;
         }
-        return dummy.next;
+        return front.next;
     }
 }
