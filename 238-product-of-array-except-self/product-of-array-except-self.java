@@ -36,10 +36,10 @@ class Solution {
 //                 if(nums[i]!=nums[j])
 //                 {
 //                     count *= nums[j];
-//                     ans[i] = count;
-//                 }
-                
+                    
+//                 } 
 //             }
+//             ans[i] = count;
 //         }
 
 //         return ans;        
