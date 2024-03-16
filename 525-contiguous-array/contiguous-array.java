@@ -10,7 +10,6 @@ class Solution {
             } else {
                 currSum += -1;
             }
-
             if (mp.containsKey(currSum)) {
                 result = Math.max(result, i - mp.get(currSum));
             } else {
