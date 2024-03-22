@@ -8,51 +8,84 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+// class Solution {
 
-    public ListNode reverse(ListNode head)
-    {
-        if(head== null || head.next == null)
-        {
-            return head;
+//     public ListNode reverse(ListNode head)
+//     {
+//         if(head== null || head.next == null)
+//         {
+//             return head;
 
-        }
+//         }
 
-        ListNode newHead = reverse(head.next);
-        ListNode front = head.next;
-        front.next = head;
-        head.next = null;
+//         ListNode newHead = reverse(head.next);
+//         ListNode front = head.next;
+//         front.next = head;
+//         head.next = null;
 
-        return newHead;
-    }
+//         return newHead;
+//     }
 
 
-    public boolean isPalindrome(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head;
+//     public boolean isPalindrome(ListNode head) {
+//         ListNode slow = head;
+//         ListNode fast = head;
         
 
-        while(fast.next!= null && fast.next.next !=null){
-            slow = slow.next;
-            fast = fast.next.next;
+//         while(fast.next!= null && fast.next.next !=null){
+//             slow = slow.next;
+//             fast = fast.next.next;
+//         }
+
+//         ListNode newHead = reverse(slow.next);
+//         ListNode first = head;
+//         ListNode second = newHead;
+
+//         while(second!=null)
+//         {
+//             if(first.val != second.val)
+//             {
+//                 reverse(newHead);
+//                 return false;
+//             }
+//             first = first.next;
+//             second = second.next;
+//             }
+//         reverse(newHead);
+//         return true;
+
+//     }
+// }
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ListNode start = head;
+        ListNode mid = head;
+        ListNode fast = head;
+        
+        while(fast != null && fast.next != null){
+            mid = mid.next;
+            fast= fast.next.next;
         }
+        
+        ListNode prev= null;
+        ListNode next = null;
+        
+        while(mid != null){
+            next = mid.next;
+            mid.next = prev;
+            prev= mid;
+            mid = next;
+        }
+        
+        while(prev!= null){
 
-        ListNode newHead = reverse(slow.next);
-        ListNode first = head;
-        ListNode second = newHead;
-
-        while(second!=null)
-        {
-            if(first.val != second.val)
-            {
-                reverse(newHead);
+            if(prev.val!= start.val){
                 return false;
             }
-            first = first.next;
-            second = second.next;
-            }
-        reverse(newHead);
+            prev= prev.next;
+            start= start.next;
+        }
         return true;
-
     }
 }
