@@ -36,7 +36,7 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-        
+
         ListNode newHead = reverse(slow.next);
         ListNode first = head;
         ListNode second = newHead;
@@ -48,13 +48,9 @@ class Solution {
                 reverse(newHead);
                 return false;
             }
-
             first = first.next;
             second = second.next;
-
-
-        }
-
+            }
         reverse(newHead);
         return true;
 
