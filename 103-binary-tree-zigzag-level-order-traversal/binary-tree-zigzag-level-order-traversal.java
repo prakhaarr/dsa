@@ -39,10 +39,10 @@ class Solution {
                 }
                 if (flag == true)
                 {
-                    subList.add(q.poll().val); //poll is the starting element
+                    subList.add(q.poll().val); //poll is the starting element // here it is adding at the last
                 }
                 else{
-                    subList.add(0, q.poll().val);
+                    subList.add(0, q.poll().val);// it means it is adding at the 0th index 
                 }
 
                 
