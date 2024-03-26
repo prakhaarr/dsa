@@ -1,6 +1,5 @@
 class Solution {
     public String largestOddNumber(String num) {
-        //int newNum = Integer.parseInt(num);
         int n = num.length();
         
         for (int i = n - 1; i >= 0; i--) {
