@@ -13,7 +13,6 @@ class Solution {
         if (head == null || head.next == null) {
             return null; 
         }
-
         ListNode slow = head;
         ListNode fast = head;
         ListNode prev = null;
@@ -23,13 +22,11 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-        
         if (prev != null) {
             prev.next = slow.next;
         } else {
             head = head.next;
         }
-
         return head;
     }
 }
