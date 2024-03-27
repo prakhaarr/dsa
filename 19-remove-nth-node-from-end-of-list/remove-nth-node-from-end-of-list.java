@@ -8,27 +8,34 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        int length = findLength(head);
-        int i = 0, traverseTill = length - n - 1;
-        if(traverseTill == -1) return head.next;
-        ListNode curr = head;
-        while(i < traverseTill){
-            curr = curr.next;
-            i++;
-        }
-        curr.next = curr.next.next;
-        return head;
+ class Solution{
+
+
+public ListNode removeNthFromEnd(ListNode head, int n) {
+    if (head == null || n <= 0) return head; // Check for edge cases
+
+    int length = 0;
+    ListNode temp = head;
+
+    // Find the length of the linked list
+    while (temp != null) {
+        length++;
+        temp = temp.next;
     }
-    public int findLength(ListNode head){
-        int count = 0;
-        if(head == null) return count;
-        ListNode curr = head;
-        while(curr != null){
-            count++;
-            curr = curr.next;
-        }
-        return count;
+
+    if (n > length) return head; // If n is greater than length, do nothing
+
+    if (length == n) return head.next; // If removing the head itself
+
+    temp = head;
+    int count = 0;
+    while (count < length - n - 1) {
+        temp = temp.next;
+        count++;
     }
+    // Now temp points to the node just before the one to be removed
+    temp.next = temp.next.next; // Remove the nth node
+
+    return head;
+}
 }
