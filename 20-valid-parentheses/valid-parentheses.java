@@ -11,10 +11,16 @@ class Solution {
                 if (stack.isEmpty()) {
                     return false; // There is a closing bracket without a corresponding opening bracket
                 }
-                char top = stack.pop();
-                if ((ch == ')' && top != '(') || (ch == ']' && top != '[') || (ch == '}' && top != '{')) {
+                char top = stack.peek();
+                if ((ch == ')' && top == '(') || (ch == ']' && top == '[') || (ch == '}' && top == '{')) {
+                    stack.pop();
+                }
+
+                else{
                     return false; // Mismatched brackets
                 }
+                    
+                
             }
         }
 
