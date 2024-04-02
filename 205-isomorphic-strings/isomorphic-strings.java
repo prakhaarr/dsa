@@ -1,31 +1,33 @@
-class Solution {
+import java.util.HashMap;
+
+public class Solution {
     public boolean isIsomorphic(String s, String t) {
-        // Create arrays to store the index of characters in both strings
-        int[] indexS = new int[200]; // Stores index of characters in string s
-        int[] indexT = new int[200]; // Stores index of characters in string t
         
-        // Get the length of both strings
-        int len = s.length();
+        HashMap<Character, Character> mapS2T = new HashMap<>();
+        HashMap<Character, Character> mapT2S = new HashMap<>();
         
-        // If the lengths of the two strings are different, they can't be isomorphic
-        if(len != t.length()) {
-            return false;
-        }
-        
-        // Iterate through each character of the strings
-        for(int i = 0; i < len; i++) {
-            // Check if the index of the current character in string s
-            // is different from the index of the corresponding character in string t
-            if(indexS[s.charAt(i)] != indexT[t.charAt(i)]) {
-                return false; // If different, strings are not isomorphic
-            }
+        for (int i = 0; i < s.length(); i++) {
+            char charS = s.charAt(i);
+            char charT = t.charAt(i);
             
-            // Update the indices of characters in both strings
-            indexS[s.charAt(i)] = i + 1; // updating index of current character
-            indexT[t.charAt(i)] = i + 1; // updating index of current character
+            // Check if there's a mapping for charS in mapS2T and if it maps to the same character in t
+            if (mapS2T.containsKey(charS)) {
+                if (mapS2T.get(charS) != charT) {
+                    return false;
+                }
+            } else { // If no mapping exists, check if charT is already mapped to some other character in mapT2S
+                if (mapT2S.containsKey(charT)) {
+                    return false;
+                }
+                
+                // Create new mapping since it's valid
+                mapS2T.put(charS, charT);
+                mapT2S.put(charT, charS);
+            }
         }
         
-        // If the loop completes without returning false, strings are isomorphic
         return true;
     }
+    
+    
 }
