@@ -22,6 +22,8 @@ class Solution {
 
         ls.add(prev);
 
-        return ls.toArray(new int[ls.size()][]);
+        int [][] ans = new int[ls.size()][];
+
+        return ls.toArray(ans);
     }
 }
