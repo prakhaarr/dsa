@@ -27,8 +27,8 @@ class Solution {
     if(left != null && left.left == null && left.right == null){
         sum += left.val;
     }
-    sum += sumOfLeftLeaves(left); 
-    sum += sumOfLeftLeaves(right);
+    sum = sum + sumOfLeftLeaves(left); 
+    sum = sum + sumOfLeftLeaves(right);
     return sum;
 }
 
