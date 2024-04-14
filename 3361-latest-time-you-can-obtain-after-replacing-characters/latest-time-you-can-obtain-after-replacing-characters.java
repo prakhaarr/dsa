@@ -28,8 +28,6 @@ class Solution {
         }
         i++;
         }
-
-        
         String str = new String(conv);
         return str;
     }
