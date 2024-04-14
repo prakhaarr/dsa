@@ -16,8 +16,6 @@ class Solution {
     }
 
     public int maximumPrimeDifference(int[] nums) {
-
-        HashSet <Integer> hs = new HashSet<>();
         ArrayList<Integer> ls = new ArrayList<>();
         for(int i =0;i<nums.length;i++){
             if(isPrime(nums[i])){
@@ -34,10 +32,5 @@ class Solution {
 
 
         return last-first;
-
-        // int firstEl = hs.stream().findFirst().get();
-        // int lastEl = hs.stream().reduce((a,b)->b).get();
-
-        // return lastEl - firstEl;
     }
 }
