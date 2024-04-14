@@ -1,12 +1,4 @@
 class Solution {
-    public long customGCD(long x, long y) {
-        while (y > 0) {
-            long temp = x;
-            x = y;
-            y = temp % y;
-        }
-        return x;
-    }
 
     public long findKthSmallest(int[] numbers, int target) {
         int length = numbers.length;
@@ -38,5 +30,14 @@ class Solution {
             }
         }
         return high;
+    }
+
+    public long customGCD(long x, long y) {
+        while (y > 0) {
+            long temp = x;
+            x = y;
+            y = temp % y;
+        }
+        return x;
     }
 }
