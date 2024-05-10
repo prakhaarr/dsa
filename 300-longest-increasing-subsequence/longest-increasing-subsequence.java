@@ -1,6 +1,6 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        
+
         int n = nums.length;
         return lol(nums,n);
 
@@ -30,3 +30,33 @@ class Solution {
         return max;
     }
 }
+
+
+// class Solution {
+//     public int lengthOfLIS(int[] nums) {
+//         int n= nums.length;
+//         List<Integer> ans = new ArrayList<>();
+ 
+//         ans.add(nums[0]);
+ 
+//         for (int i = 1; i < n; i++) {
+//             if (nums[i] > ans.get(ans.size() - 1)) {
+//                 ans.add(nums[i]);
+//             } else {
+//                 int low = Collections.binarySearch(ans, nums[i]);
+//                 if (low < 0) {
+//                     low = -(low + 1);
+//                 }
+//                 ans.set(low, nums[i]);
+//             }
+//         }
+//         /*for (int i=0;i<ans.size();i++) {
+//             System.out.print(ans.get(i) + " ");
+//         }*/
+//         // The size of the answer list
+//         // represents the length of the
+//         // longest increasing subsequence.
+//         return ans.size();
+
+//     }
+// }
