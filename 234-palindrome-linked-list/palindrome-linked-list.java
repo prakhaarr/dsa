@@ -59,33 +59,62 @@
 
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        ListNode start = head;
-        ListNode mid = head;
-        ListNode fast = head;
+        // ListNode start = head;
+        // ListNode mid = head;
+        // ListNode fast = head;
         
-        while(fast != null && fast.next != null){
-            mid = mid.next;
-            fast= fast.next.next;
-        }
+        // while(fast != null && fast.next != null){
+        //     mid = mid.next;
+        //     fast= fast.next.next;
+        // }
         
-        ListNode prev= null;
-        ListNode next = null;
+        // ListNode prev= null;
+        // ListNode next = null;
         
-        while(mid != null){
-            next = mid.next;
-            mid.next = prev;
-            prev= mid;
-            mid = next;
-        }
+        // while(mid != null){
+        //     next = mid.next;
+        //     mid.next = prev;
+        //     prev= mid;
+        //     mid = next;
+        // }
         
-        while(prev!= null){
+        // while(prev!= null){
 
-            if(prev.val!= start.val){
+        //     if(prev.val!= start.val){
+        //         return false;
+        //     }
+        //     prev= prev.next;
+        //     start= start.next;
+        // }
+        // return true;
+
+        ListNode temp = head;
+        Stack<Integer> st = new Stack<>();
+
+        // if(head==null){
+        //     return false;
+        // }
+
+        // if(head.next == null){
+        //     return head;
+        // }
+
+        while(temp!=null){
+            st.push(temp.val);
+            temp = temp.next;
+        }
+
+        while(head!=null){
+            if(head.val == st.peek()){
+                st.pop();
+                head = head.next;
+            }
+
+            else{
                 return false;
             }
-            prev= prev.next;
-            start= start.next;
         }
+
         return true;
     }
 }
