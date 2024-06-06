@@ -10,49 +10,44 @@
  */
 class Solution {
 
-    public static ListNode findNthNode(ListNode temp, int k)
-    {
-        int count =1;
-
-        while(temp!=null)
-        {
-            if(count==k)
-            {
-                return temp;
-            }
-
-            count++;
-            temp = temp.next;
-        }
-        return temp;
-    }
-
     public ListNode rotateRight(ListNode head, int k) {
 
-        if(head==null || head.next == null){
+        if(head == null || head.next == null) {
             return head;
         }
-        int len =1;
-        ListNode tail = head;
 
-        while(tail.next != null)
-        {
+        // Find the length of the list
+        ListNode counter = head;
+        int len = 0;
+
+        while(counter != null) {
+            counter = counter.next;
             len++;
+        }
+
+        // Find the effective rotations needed
+        k = k % len;
+        if (k == 0) {
+            return head; // No rotation needed
+        }
+
+        // Find the new tail (len - k - 1) and the new head (len - k)
+        ListNode tail = head;
+        for(int i = 0; i < len - k - 1; i++) {
             tail = tail.next;
         }
 
-        if(k%len ==0)
-        {
-            return head;
+        // Set the new head and adjust the pointers
+        ListNode newHead = tail.next;
+        tail.next = null;
+
+        // Find the old tail and connect it to the original head
+        ListNode oldTail = newHead;
+        while(oldTail.next != null) {
+            oldTail = oldTail.next;
         }
+        oldTail.next = head;
 
-        k = k%len;
-        tail.next = head;
-        ListNode newNode = findNthNode(head,len-k);
-        head = newNode.next;
-        newNode.next = null;
-
-        return head;
-
+        return newHead;
     }
 }
