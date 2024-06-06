@@ -25,23 +25,20 @@ class Solution {
             len++;
         }
 
-        // Find the effective rotations needed
         k = k % len;
         if (k == 0) {
-            return head; // No rotation needed
+            return head; 
         }
 
-        // Find the new tail (len - k - 1) and the new head (len - k)
+        
         ListNode tail = head;
         for(int i = 0; i < len - k - 1; i++) {
             tail = tail.next;
         }
 
-        // Set the new head and adjust the pointers
         ListNode newHead = tail.next;
         tail.next = null;
 
-        // Find the old tail and connect it to the original head
         ListNode oldTail = newHead;
         while(oldTail.next != null) {
             oldTail = oldTail.next;
