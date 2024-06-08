@@ -14,25 +14,6 @@ class Node {
 */
 
 class Solution {
-    // public class copyList(Node copy){
-
-    //     ListNode temp = head;
-    //     while(temp!=null){
-    //         Node copyNode = new Node(temp.val);
-    //         copyNode.next = temp.next;
-    //         temp.next = copyNode;
-    //         temp = temp.next.next;
-    //     }
-    // }
-
-    // public class randomPointer(Node copy){
-    //     ListNode temp = head;
-    //     while(temp!=null){
-
-    //     }
-    //}
-
-
     public Node copyRandomList(Node head) {
 
         if (head == null) {
