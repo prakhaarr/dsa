@@ -1,15 +1,29 @@
 
 class Solution {
-    private void f(int index, int[] nums, List<Integer> t, List<List<Integer>> ans) {
-        ans.add(new ArrayList<>(t));
-
-        for (int i = index; i < nums.length; i++) {
-            if (i != index && nums[i] == nums[i - 1])
-                continue;
-            t.add(nums[i]);
-            f(i + 1, nums, t, ans);
-            t.remove(t.size() - 1);
+    void helper(int nums[],int i,List<Integer> subset,List<List<Integer>> ans){
+        if(i == nums.length){
+            ans.add(new ArrayList<>(subset));
+            return ;
         }
+        
+         subset.add(nums[i]);
+        
+        // We ask recursion to do rest of the task
+        
+        helper(nums, i + 1, subset, ans);
+        
+        // Backtrack and Undo the change we have done
+        
+        subset.remove(subset.size() - 1);
+        
+        // While using Don't Pick option, we must ensure we skip all the Duplicate Occurrences of nums[i]
+    
+        while(i < nums.length - 1 && (nums[i] == nums[i + 1] ) )
+        {
+            i++ ;
+        }
+        helper(nums, i + 1, subset, ans);
+        return ;
     }
 
     public List<List<Integer>> subsetsWithDup(int[] nums) {
@@ -17,7 +31,7 @@ class Solution {
         List<Integer> t = new ArrayList<>();
 
         Arrays.sort(nums);
-        f(0, nums, t, ans);
+        helper(nums,0, t, ans);
         return ans;
     }
 }
