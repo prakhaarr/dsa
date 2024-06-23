@@ -7,7 +7,8 @@ class Solution {
             char ch = s.charAt(i);
             if (ch == '(' || ch == '[' || ch == '{') {
                 stack.push(ch);
-            } else {
+            } 
+            else {
                 if (stack.isEmpty()) {
                     return false; // There is a closing bracket without a corresponding opening bracket
                 }
