@@ -1,7 +1,6 @@
 class Solution {
     public int findCenter(int[][] edges) {
-        HashSet<Integer> mp = new HashSet<>();
-
+    
         int f00 = edges[0][0];
         int f01 = edges[0][1];
 
