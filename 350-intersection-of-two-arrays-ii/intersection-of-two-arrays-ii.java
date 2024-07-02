@@ -19,11 +19,11 @@ class Solution {
         }
 
         // Convert the result list to an array
-        int[] intersection = new int[result.size()];
+        int[] ansss = new int[result.size()];
         for (int i = 0; i < result.size(); i++) {
-            intersection[i] = result.get(i);
+            ansss[i] = result.get(i);
         }
 
-        return intersection;
+        return ansss;
     }
 }
