@@ -38,12 +38,6 @@ class Solution {
 
 
 
-
-
-
-
-
-
         // ListNode temp = head;
         // List<Integer> ls = new ArrayList<>();
         // List<Integer> ans = new ArrayList<>();
