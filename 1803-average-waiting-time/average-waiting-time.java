@@ -3,7 +3,7 @@ class Solution {
 
         List<Integer> ls = new ArrayList<>();
 
-        int timeTaken =0;
+        //int timeTaken =0;
         int time = customers[0][0] + customers[0][1];
         ls.add(time-customers[0][0]);
         //timeTaken = time-customers[0][0];
