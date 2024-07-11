@@ -6,11 +6,11 @@ class Solution {
             return;
         }
         
-        // Include the current number in the subset
+        // Including the current number in the subset
         current.add(nums[index]);
         rec(nums, index + 1, current, result);
         
-        // Exclude the current number from the subset
+        // Excluding the current number from the subset
         current.remove(current.size() - 1);
         rec(nums, index + 1, current, result);
     }
