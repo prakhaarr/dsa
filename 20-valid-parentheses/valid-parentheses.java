@@ -8,7 +8,7 @@ class Solution {
             if (ch == '(' || ch == '[' || ch == '{') {
                 stack.push(ch);
             } 
-            else {
+            else { //closing araha hai 
                 if (stack.isEmpty()) {
                     return false; // There is a closing bracket without a corresponding opening bracket
                 }
