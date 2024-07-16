@@ -4,8 +4,8 @@ class Solution {
     int ans=Integer.MIN_VALUE;
     for(int i : nums)
     {
-        sum=sum + i;
-        ans=Math.max(sum,ans);//sum = -2 therefore ans = -2
+        sum+=i;
+        ans=Math.max(sum,ans);
         if(sum<0) sum=0;
     }
     return ans;
