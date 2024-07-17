@@ -10,7 +10,7 @@ class Solution {
         }
 
         for (int i = index; i < arr.length; i++) {
-            if (i > index && arr[i] == arr[i - 1]) {
+            if (i > index && arr[i] == arr[i - 1]) { // break and continue logic very important
                 continue; 
             }
             currentList.add(arr[i]);
