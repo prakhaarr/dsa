@@ -11,7 +11,7 @@ class Solution {
 
         for (int i = index; i < arr.length; i++) {
             if (i > index && arr[i] == arr[i - 1]) {
-                continue;
+                continue; 
             }
             currentList.add(arr[i]);
             helper(arr, target, i + 1, currSum + arr[i], currentList, ans);
@@ -21,7 +21,7 @@ class Solution {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> ans = new ArrayList<>();
-        Arrays.sort(candidates); // sort the array to handle duplicates
+        Arrays.sort(candidates); // sort the array to handle duplicates   1,1,2,5,6,7,10
         helper(candidates, target, 0, 0, new ArrayList<>(), ans);
         System.gc();
         return ans;
