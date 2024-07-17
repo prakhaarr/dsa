@@ -23,7 +23,7 @@ class Solution {
         List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(candidates); // sort the array to handle duplicates   1,1,2,5,6,7,10
         helper(candidates, target, 0, 0, new ArrayList<>(), ans);
-        System.gc();
+        //System.gc();
         return ans;
     }
 }
