@@ -17,6 +17,7 @@ class Solution {
     public int countPairs(TreeNode root, int distance) {
         int[] count = new int[1];
         dfs(root, distance, count);
+        System.gc();
         return count[0];
     }
 
@@ -50,6 +51,7 @@ class Solution {
         for (int i = 0; i < rightLeaves.size(); i++) {
             leaves.add(rightLeaves.get(i) + 1);
         }
+
 
         return leaves;
     }
