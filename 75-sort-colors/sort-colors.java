@@ -26,6 +26,7 @@ class Solution {
                 e--;
             }
         }
+        
         sortt(nums,low,e);
         sortt(nums,s,high);
         
@@ -45,6 +46,7 @@ class Solution {
         // }
 
         sortt(nums,0,nums.length-1);
+        System.gc();
 
 
     }
