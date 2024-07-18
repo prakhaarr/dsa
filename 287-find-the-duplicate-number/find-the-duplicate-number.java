@@ -1,21 +1,31 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        HashSet <Integer> mp = new HashSet<>();
+        // HashSet <Integer> mp = new HashSet<>();
 
-        for(int i =0;i<nums.length;i++)
-        {
-            if(mp.contains(nums[i])){
+        // for(int i =0;i<nums.length;i++)
+        // {
+        //     if(mp.contains(nums[i])){
+        //         return nums[i];
+        //     }
+
+        //     else{
+        //         mp.add(nums[i]);
+        //     }
+        // }
+        
+        // return -1;
+
+        boolean[] map = new boolean[nums.length+1];
+        for(int i =0;i<nums.length;i++){
+            if(map[nums[i]]==true){
                 return nums[i];
             }
 
-            else{
-                mp.add(nums[i]);
-            }
+            map[nums[i]] = true;
         }
-        
-        return -1;
 
 
+        return 0;
 
     }
 }
