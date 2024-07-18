@@ -24,7 +24,7 @@ class Solution {
             map[nums[i]] = true;
         }
 
-
+        //System.gc();
         return 0;
 
     }
