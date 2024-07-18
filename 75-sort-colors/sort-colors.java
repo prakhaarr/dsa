@@ -46,7 +46,7 @@ class Solution {
         // }
 
         sortt(nums,0,nums.length-1);
-        System.gc();
+        //System.gc();
 
 
     }
