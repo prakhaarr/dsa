@@ -1,15 +1,11 @@
 class Solution {
-    // public static int find(List<Integer> ls){
-    //     ls.sort();
-    //     return ls.get(0);
-    // }
+
     public List<Integer> luckyNumbers (int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
         List<Integer> ls = new ArrayList<>();
         List<Integer> ls2 = new ArrayList<>();
-        //int temp=0;
-        
+       
         for(int i=0;i<m;i++){
             int temp = Integer.MAX_VALUE;
             for(int j =0;j<n;j++){
