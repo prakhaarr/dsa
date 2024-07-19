@@ -20,6 +20,7 @@ class Solution {
         List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(nums);
         helper(0,nums, new ArrayList<>(), ans,nums.length);
+        System.gc();
         return ans;
     }
 }
