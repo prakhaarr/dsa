@@ -41,6 +41,8 @@ class Solution {
             }
         }
 
+        System.gc();
+
         return ans;
 
         
