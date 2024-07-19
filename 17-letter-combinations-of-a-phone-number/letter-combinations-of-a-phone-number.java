@@ -29,7 +29,7 @@ class Solution {
             return;
         }
 
-        String letters = KEYPAD[digits.charAt(index) - '0'];
+        String letters = KEYPAD[digits.charAt(index) - '0']; //substracting 0 because we are using String 0 , so if we subtract it we will get the integer value
         for (char letter : letters.toCharArray()) {
             curr.append(letter);
             helper(digits, index + 1, curr, ans);
