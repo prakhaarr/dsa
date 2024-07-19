@@ -7,7 +7,8 @@ class Solution {
                    return arr;
               }
           }
-      }  
+        }  
+    System.gc();
     return null;
     }
 }
