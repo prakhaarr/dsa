@@ -1,79 +1,78 @@
 class Solution {
+    public int[][] buildMatrix(int k, int[][] rowConditions, int[][] colConditions) {
+        List<Integer>[] rowGraph = new ArrayList[k + 1]; 
+        for(int i = 1 ; i < rowGraph.length; i ++) {
+            rowGraph[i] = new ArrayList();
+        }
+        for(int [] rowCondition : rowConditions){ 
+            rowGraph[rowCondition[0]].add(rowCondition[1]); 
+        }
 
-    public int[][] buildMatrix(
-        int k,
-        int[][] rowConditions,
-        int[][] colConditions
-    ) {
-        // Store the topologically sorted sequences.
-        List<Integer> orderRows = topoSort(rowConditions, k);
-        List<Integer> orderColumns = topoSort(colConditions, k);
+        List<Integer>[] colGraph = new ArrayList[k + 1]; 
+        for(int i = 1 ; i < colGraph.length; i ++) {
+            colGraph[i] = new ArrayList();
+        }
+        for(int [] colCondition : colConditions){
+            colGraph[colCondition[0]].add(colCondition[1]); 
+        }
 
-        // If no topological sort exists, return empty array.
-        if (orderRows.isEmpty() || orderColumns.isEmpty()) return new int[0][0];
+        int[] visited = new int[k + 1];
+        Deque<Integer> queue = new LinkedList<>(); 
+        for(int i = 1; i < rowGraph.length; i++){ 
+            if(!topSort(rowGraph, i, visited, queue)){
+                return new int[0][0];
+            }
+        }
 
-        int[][] matrix = new int[k][k];
-        for (int i = 0; i < k; i++) {
-            for (int j = 0; j < k; j++) {
-                if (orderRows.get(i).equals(orderColumns.get(j))) {
-                    matrix[i][j] = orderRows.get(i);
+        
+        int[] rowOrder = new int[k];
+        int[] rowIndexMap = new int[k + 1]; 
+        for(int i = 0; i < k; i++){ 
+            int node = queue.pollLast(); 
+            rowOrder[i] = node; //
+            rowIndexMap[node] = i;
+        }
+
+        visited = new int[k + 1];
+        queue = new LinkedList();
+        for(int i = 1; i < colGraph.length; i++){
+            if(!topSort(colGraph, i, visited, queue)){
+                return new int[0][0];
+            }
+        }
+
+        int[] colOrder = new int[k];
+        int[] colIndexMap = new int[k+1];
+        for(int i = 0; i < k; i++){
+            int node = queue.pollLast();
+            colOrder[i] = node;
+            colIndexMap[node] = i;
+        }
+
+        int[][] result = new int[k][k];
+        
+        for(int i = 1; i <= k; i++){
+            result[rowIndexMap[i]][colIndexMap[i]] = i;
+        }
+
+        return result;
+
+    }
+
+    public boolean topSort(List<Integer>[] graph, int node, int[] visited, Deque<Integer> queue){
+        if(visited[node] == 2) {
+            return false;
+        }
+        if(visited[node] == 0){
+            visited[node] = 2;
+            for(int child : graph[node]){
+                if(!topSort(graph, child, visited, queue)){
+                    return false;
                 }
             }
+            visited[node] = 1;
+            queue.add(node);
         }
-        return matrix;
-    }
-
-    private List<Integer> topoSort(int[][] edges, int n) {
-        // Build adjacency list
-        List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i <= n; i++) {
-            adj.add(new ArrayList<>());
-        }
-        for (int[] edge : edges) {
-            adj.get(edge[0]).add(edge[1]);
-        }
-
-        List<Integer> order = new ArrayList<>();
-        // 0: not visited, 1: visiting, 2: visited
-        int[] visited = new int[n + 1];
-        boolean[] hasCycle = { false };
-
-        // Perform DFS for each node
-        for (int i = 1; i <= n; i++) {
-            if (visited[i] == 0) {
-                dfs(i, adj, visited, order, hasCycle);
-                // Return empty if cycle detected
-                if (hasCycle[0]) return new ArrayList<>();
-            }
-        }
-
-        // Reverse to get the correct order
-        Collections.reverse(order);
-        return order;
-    }
-
-    private void dfs(
-        int node,
-        List<List<Integer>> adj,
-        int[] visited,
-        List<Integer> order,
-        boolean[] hasCycle
-    ) {
-        visited[node] = 1; // Mark node as visiting
-        for (int neighbor : adj.get(node)) {
-            if (visited[neighbor] == 0) {
-                dfs(neighbor, adj, visited, order, hasCycle);
-                // Early exit if a cycle is detected
-                if (hasCycle[0]) return;
-            } else if (visited[neighbor] == 1) {
-                // Cycle detected
-                hasCycle[0] = true;
-                return;
-            }
-        }
-        // Mark node as visited
-        visited[node] = 2;
-        // Add node to the order
-        order.add(node);
+        return true;
     }
 }
