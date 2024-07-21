@@ -15,8 +15,6 @@ class Solution {
         int n = nums.length;
         int[] dp = new int[n];
         Arrays.fill(dp, -1);
-
-        System.gc();
         return f(n-1,nums,dp);
 
         
