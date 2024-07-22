@@ -8,7 +8,7 @@ class Solution {
 
         TreeMap<Integer, String> sortMP = new TreeMap<>(Comparator.reverseOrder());
         sortMP.putAll(mp);
-        System.out.print(sortMP);
+
 
         String[] ans = sortMP.values().toArray(new String[0]);
 
