@@ -11,8 +11,6 @@ class Solution {
         for(Map.Entry<Integer,String> m : mp.entrySet()){
             ans[j--] = m.getValue();
         }
-
-
         return ans;
     }
 }
