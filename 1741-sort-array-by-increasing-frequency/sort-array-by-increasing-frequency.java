@@ -24,7 +24,7 @@ class Solution {
         for (int i = 0; i < numList.size(); i++) {
             sortedNums[i] = numList.get(i);
         }
-        System.gc();
+        // System.gc();
 
         return sortedNums;
     }
