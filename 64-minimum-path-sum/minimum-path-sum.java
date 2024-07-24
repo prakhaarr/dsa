@@ -21,8 +21,6 @@ class Solution {
         for (int[] row: dp){
             Arrays.fill(row, -1);
         }
-
-
         return helper(m,n,0,0,grid,dp);
     }
 }
