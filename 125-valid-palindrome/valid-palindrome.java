@@ -9,7 +9,7 @@ class Solution {
             }
         }
 
-        StringBuilder reversed = new StringBuilder(sb).reverse();
-        return sb.toString().equals(reversed.toString());
+        StringBuilder sb2 = new StringBuilder(sb).reverse();
+        return sb.toString().equals(sb2.toString());
     }
 }
