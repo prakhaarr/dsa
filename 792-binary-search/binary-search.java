@@ -10,7 +10,7 @@ class Solution {
             else if(nums[mid] < target) low = mid+1;
             else high = mid-1;
         }
-
+        System.gc();
         return -1;
         
     }
