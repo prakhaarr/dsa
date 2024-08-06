@@ -13,10 +13,11 @@ class Solution {
             }
             else{
                 hs.remove(s.charAt(i++));
+    
             }
         }
 
         return ans;
-        
     }
+
 }
