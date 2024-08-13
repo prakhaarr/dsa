@@ -10,23 +10,19 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if (list1 == null)
-            return list2;
-        if (list2 == null)
-            return list1;
-
+        ListNode temp1 = list1;
+        ListNode temp2 = list2;
         List<Integer> ls = new ArrayList<>();
 
-        while (list1 != null) {
-            ls.add(list1.val);
-            list1 = list1.next;
+        while(temp1!= null){
+            ls.add(temp1.val);
+            temp1 = temp1.next;
         }
 
-        while (list2 != null) {
-            ls.add(list2.val);
-            list2 = list2.next;
+        while(temp2!= null){
+            ls.add(temp2.val);
+            temp2 = temp2.next;
         }
-
         Collections.sort(ls);
 
         ListNode result = new ListNode(-1);
@@ -36,7 +32,8 @@ class Solution {
             result.next = new ListNode(ls.get(i));
             result = result.next;
         }
-
         return temp.next;
+
+
     }
 }
