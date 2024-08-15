@@ -8,45 +8,28 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
- class Solution{
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
 
+        if(head==null) return null;
+        ListNode temp = head;
+        int count =0;
 
-public ListNode removeNthFromEnd(ListNode head, int n) {
-    if(head.next == null && n==1){
-        return null;
-    }
-    if(head ==null || head.next == null){
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
+        if(n==count) return head.next;
+
+        ListNode travel = head;
+        int num =1;
+        for(int i=1;i<count-n;i++){
+            travel = travel.next;
+        }
+        
+        travel.next=travel.next.next;
+
         return head;
+
     }
-    
-    
-    ListNode temp =head;
-    int count =0;
-
-    while(temp!=null){
-        count++;
-        temp = temp.next;
-    }
-    if (count == n) return head.next;
-    ListNode move = head;
-
-    for(int i =1;i<count-n;i++){
-        move = move.next;
-    }
-
-    if(n==1){
-        move.next = null;
-    }
-    else{
-        move.next = move.next.next;
-    }
-    //System.out.println(count);
-
-    
-
-
-    return head;
-
-
-}
 }
