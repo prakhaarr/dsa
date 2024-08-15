@@ -13,4 +13,6 @@ class Solution {
         return 0;
         
     }
+    //Same will be done for the linked list, just insert all nodes in HashMap and check wether these are already there in map or not , if available return that node, else keep on adding
+    
 }
