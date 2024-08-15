@@ -54,11 +54,8 @@ class Solution {
         }
 
         ListNode newHead = reverse(slow.next);
-
         slow.next = null;
-
         ListNode mergedList = merge(head,newHead);
-
         head = mergedList;
 
         
