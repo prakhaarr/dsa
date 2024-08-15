@@ -1,14 +1,16 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        boolean[] map = new boolean[nums.length+1];
+        int[] arr = new int[100001];
         for(int i =0;i<nums.length;i++){
-            if(map[nums[i]]==true){
+            if(arr[nums[i]]!=0){
                 return nums[i];
-            }
 
-            map[nums[i]] = true;
+            }
+            else{
+                arr[nums[i]]++;
+            }
         }
         return 0;
-
+        
     }
 }
