@@ -14,13 +14,36 @@
  * }
  */
 class Solution {
+    // public List<Integer> helper(TreeNode root,List<Integer> ans){
+    //     if(root==null){
+    //         ans.add(null);
+    //         return ans;
+    //     }
+
+    //     helper(root.left,ans);
+    //     ans.add(root.val);
+    //     helper(root.right,ans);
+
+    //     return ans;
+    // }
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        if(p==null || q==null)return p==q;
-        if(p.val==q.val && isSameTree(p.left,q.left) && isSameTree(p.right,q.right)){
+        // List<Integer> ls1 = new ArrayList<>();
+        // List<Integer> ls2 = new ArrayList<>();
+        // helper(p,ls1);
+        // helper(q,ls2);
+
+        // return ls1.equals(ls2);
+        if(p==null && q==null){
             return true;
         }
+        if(p==null || q==null){
+            return false;
+        }
+        if(p.val!=q.val){
+            return false;
+        }
 
-        return false;
-        
+        return (isSameTree(p.left,q.left) && isSameTree(p.right,q.right));
+
     }
 }
