@@ -7,7 +7,6 @@ class Solution {
         int[] preSum=new int[n]; //Prefix Sum 
         int cnt=0;
         for(int i=1; i<n; i++){
-            //if( (nums[i-1]%2==0 && nums[i]%2==1) || (nums[i-1]%2==1 && nums[i]%2==0) ){ //Checking pair (EVEN & ODD) || (ODD & EVEN)
             if( nums[i-1]%2 != nums[i]%2 ){
                 cnt++;
             }
